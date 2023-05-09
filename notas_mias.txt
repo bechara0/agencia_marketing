@@ -1,0 +1,7 @@
+1) python -m viertualenv env
+2) ./env/Scripts/activate
+3) pip install django==3.2.16
+4) django-admin startproject core .
+5) hago el archivo requeriments.txt, luego pip install -r .\requeriments.txt
+6) creo .env en core --> aca se almacenan las claves que no quiero que luego se vean
+7) creo .gitgnore, en gitignore.io usando react, python y django creo el codigo a pegar en este archivo
