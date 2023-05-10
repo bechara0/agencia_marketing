@@ -1,7 +1,43 @@
+* 1ER VIDEO --> https://www.youtube.com/watch?v=6CUgF7cglT4&t=3595s
+
 1) python -m viertualenv env
 2) ./env/Scripts/activate
 3) pip install django==3.2.16
 4) django-admin startproject core .
 5) hago el archivo requeriments.txt, luego pip install -r .\requeriments.txt
 6) creo .env en core --> aca se almacenan las claves que no quiero que luego se vean
-7) creo .gitgnore, en gitignore.io usando react, python y django creo el codigo a pegar en este archivo
+7) creo .gitgnore, en gitignore.io usando react, python y django creo el codigo a pegar en este archivo, buscar en el mismo build, el primero y comentarlo porque lo usa react y debe subirse, lo mismo con statics que es de django
+8) subi a github, cree la rama standing.
+
+***SETTINGS.PY Y .ENV***
+
+9) en settings.py:
+   a-> 
+import os
+import environ
+
+env = environ.Env()
+environ.Env.read.env()
+
+   b -> protejer SECRET_KEY y DEBUG de settings.py
+
+10) Trabajo con el apartado INSTALLED_APPS del settings.py, pero primero creo la carpeta apps, luego copio de core el __init__.py y lo pego en la carpeta creada, de esa forma ahora django sabe que esa carpeta tiene apps. Luego modifico agrergo en setting , DJANGO_APPS, PROJECT_APPS, THIRD_PARTY_APPS E INSTALLED_APPS. Agregar la configuracion de CKEDITOR a continuacion. Agregar corsheaders al middleware.
+11) migrar
+12) En settings.py al final, donde agregue if not DEBUG, agregar las lineas de DATABASE, Agregar DATABASE_URL al .env.
+12) Configurar lenguaje y zona horaria
+13) agregar el STATIC_ROOT, MEDIA_ROOT, MEDIA_URL, STATICFILES_DIRS
+14) seguimos en settings, configurar REST_FRAMEWORK
+15) en settings y .env ver CORS_ORIGIN_WHITELIST, el localhost:3000 es para react, ya que django usa el port 8000.
+16) CSRF_TRUSTED_ORIGINS, hacer lo mismo q el anterior
+17) EMAIL_BACKENDS agregar linea
+18) en urls.py agregar el static con sus importaciones.
+
+
+***REACT***
+19) con la terminal posicionada en el escritorio: npx create-react-app agencia_marketing --> luego entro en el directorio agencia_marketing creado y --> npm run start
+20) de la carpeta del proyecto de react, copio public, src y packpage.json, y lo pegamos en la carpeta del proyecto django
+21) en terminal nueva npm install --> crea el node_modeles
+22) npm run build --> crea el build
+23) terminal de python --> python manage.py collectstatic
+24) en settings, e, templates -->"DIRS": [os.path.join(BASE_DIR, "build")],
+25) ir a URLS.py , hacer las importaciones, y luego agregar el re_path
